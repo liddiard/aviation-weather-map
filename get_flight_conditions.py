@@ -20,13 +20,11 @@ def parse_weather(metars):
         }
     return weather
 
-def get_weather(airports, hours_before_now=2):
+def get_weather(airports):
     """given a list of airports, make a request to the aviation weather
     server, parse the response, and return a list of METARs
     """
     # https://aviationweather.gov/data/api/
-    url = f"https://aviationweather.gov/api/data/metar?format=json&hours={hours_before_now}&ids=" + ",".join([item for item in airports if item != "NULL"])
+    url = f"https://aviationweather.gov/api/data/metar?format=json&ids=" + ",".join([item for item in airports if item != ""])
     content = request.urlopen(url, timeout=30).read()
     return parse_weather(json.loads(content))
-
-
