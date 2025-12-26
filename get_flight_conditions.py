@@ -16,7 +16,7 @@ def parse_weather(metars):
         weather[airport] = {
             "flight_category": get_flight_category(metar),
             "wind_speed": metar.get("wspd", 0),
-            "wind_gust": metar.get("wgst", 0)
+            "wind_gust": metar.get("wgst")
         }
     return weather
 
