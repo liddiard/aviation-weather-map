@@ -27,8 +27,6 @@ def get_flight_category(metar):
 
     if visibility == "10+":
         visibility = math.inf
-    else:
-        visibility = float(visibility)
 
     ceiling = get_ceiling(metar.get("clouds", []))
     if ceiling < 500 or visibility < 1:
