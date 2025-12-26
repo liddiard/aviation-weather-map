@@ -185,10 +185,10 @@ for airport in airports:
 
 # time in seconds since the METAR data was last updated
 last_update_time = 0
+metars = None
 
 # main loop
 while True:
-    metars = None
     if time.time() > last_update_time + constants.UPDATE_FREQUENCY * 60:
         try:
             metars = update_metar_map(airports)
