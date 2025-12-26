@@ -25,7 +25,7 @@ def get_weather(airports, hours_before_now=2):
     server, parse the response, and return a list of METARs
     """
     # https://aviationweather.gov/data/api/
-    url = f"https://aviationweather.gov/api/data/metar?ids=KFOT&format=json&hours={hours_before_now}&ids=" + ",".join([item for item in airports if item != "NULL"])
+    url = f"https://aviationweather.gov/api/data/metar?format=json&hours={hours_before_now}&ids=" + ",".join([item for item in airports if item != "NULL"])
     content = request.urlopen(url, timeout=30).read()
     return parse_weather(json.loads(content))
 
