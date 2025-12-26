@@ -188,10 +188,12 @@ last_update_time = 0
 
 # main loop
 while True:
+    metars = None
     if time.time() > last_update_time + constants.UPDATE_FREQUENCY * 60:
         try:
             metars = update_metar_map(airports)
         except URLError as e:
             print("Error fetching weather: {}".format(e))
-        last_update_time = time.time()            
-    animate_winds(animation_state, metars)
+        last_update_time = time.time()
+    if metars is not None:
+        animate_winds(animation_state, metars)
